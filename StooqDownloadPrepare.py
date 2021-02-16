@@ -49,16 +49,16 @@ def download_ticker_data(ticker: str, sep: str = ','):
     return ticker_data
 
 
-def closing_price_data(tickers: list):
-
+def closing_prices_for_index_components(tickers: list):
     '''
-    EXPERIMENTAL FUNCTION -> CURRENTLY NOT DISPLAYING DATA CORRECTLY
+    Returns a full dataset containing the closing prices for the companies within
+    an index.
     '''
     companies_closing_price = []
     for company in tickers:
         companies_closing_price.append(download_ticker_data(company)['Zamkniecie'])
 
-    full_df = pd.concat(companies_closing_price, axis = 1)
+    full_df = pd.concat(companies_closing_price, axis = 1, sort = True)
     full_df.columns = tickers
 
     return full_df
