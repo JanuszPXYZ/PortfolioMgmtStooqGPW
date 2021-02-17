@@ -9,11 +9,15 @@ import urllib
 #full_query = url_query + csv_download_query
 
 
-def get_index_components(query: str):
+def get_index_components(query: str = 'https://stooq.pl/q/i/?s=mwig40'):
     '''
     Returns components of an index that is specified for a given
     index (in the case of Polish Stock Exchange (GPW) that would be
     for example mWig40)
+
+    # For the time being, I will set the 'query' argument to download
+    # mWig 40 data. Changing this to some other index (WIG20) for example
+    # should be pretty straightforward then.
 
     '''
     htmlContents = []
