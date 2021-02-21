@@ -43,14 +43,14 @@ def get_index_components(query: str = 'https://stooq.pl/q/i/?s=mwig40'):
     return companies
 
 
-def download_ticker_data(ticker: str, sep: str = ','):
+def download_ticker_data(ticker: str, sep: str = ',', index_col: str = "Data"):
     '''
     Returns a DataFrame for a specified ticker.
     '''
     ticker_url = f"https://stooq.pl/q/d/l/?s={ticker}&i=d"
     ticker_data = pd.DataFrame(pd.read_table(ticker_url, sep = sep))
     ticker_data.name = ticker
-    ticker_data = ticker_data.set_index("Data")
+    ticker_data = ticker_data.set_index(index_col)
 
     return ticker_data
 
